@@ -1,0 +1,121 @@
+# Uthana - The fastest way to bring your characters to life
+
+Generative AI for 3D character animation.
+
+>_ Create motion from text, video, or real-time inputs.
+>_ Instantly apply to any character, output anywhere.
+>_ Works for animators, developers, and studios.
+
+## Generate Motion
+> Create motion however you work best — all instantly applied to your characters.
+
+### Describe & animate
+Generate lifelike motions from a simple text prompt in seconds. Then tweak, trim, save, and download.
+
+- Learn more about text to motion at https://uthana.com/product/text-to-motion
+
+### Animate from 2D video
+Upload any reference video of an action or movement to generate accurate, character-ready motions.
+
+- Learn more about video to motion at https://uthana.com/product/video-to-motion
+
+### Stitch & loop
+Join multiple clips into a single seamless, realistic motion — without any keyframe work.
+
+- Learn more about:
+  - Stitching at https://uthana.com/product/stitching
+  - Looping at https://uthana.com/product/looping
+
+### Control in real time
+Drive characters live in-engine with generative AI motion — choose from 50+ unique character styles.
+
+- Learn more about real-time animation at https://uthana.com/product/real-time-animation
+
+### Move & record
+Control your character’s movement interactively, then save the output as a ready-to-use motion clip.
+
+### Search
+Access our library of over 50,000 studio-quality motion clips — with new content added regularly.
+
+## Works with any character, outputs anywhere
+> Our proprietary IK retargeting works with any rig, regardless of skeleton structure. Don't have a rig? Uthana can auto-rig in seconds.
+
+- Learn more about flexible retargeting at https://uthana.com/product/flexible-retargeting
+- Learn more about auto-rigging at https://uthana.com/product/auto-rigging
+
+With support for:
+- [Maya](https://github.com/Uthana/uthana-maya-plugin)
+- [Blender](https://github.com/Uthana/uthana-blender-plugin)
+- Unreal
+- Unity
+- FBX
+- GLB/GLTF
+- and more...
+
+## Built for your workflow
+> Uthana's animation tools are tailored to your workflow — integrate our powerful AI animation platform where and how you need it.
+
+### Animators
+Generate realistic, production-ready animation fast — without hours of keyframing and iteration.
+
+### Game developers
+Fill your games with diverse motion styles and smooth AI-generated transitions — in less than 20MB of memory.
+
+### Studios
+Unify your animation style and accelerate pipelines while reducing repetitive, time-consuming tasks.
+
+### Technology partners
+Integrate Uthana's platform directly into your products using our API and SDK — seamless, scalable, and customizable.
+
+### Animator plugins
+- [Maya plugin](https://github.com/Uthana/uthana-maya-plugin)
+- [Blender add-on](https://github.com/Uthana/uthana-blender-plugin)
+
+
+### Developer resources
+- [API documentation](https://uthana.com/docs/api)
+- [Context7](https://context7.com/websites/uthana_api) (LLM-friendly API documentation)
+- [JavaScript client](https://github.com/Uthana/uthana-js-client)
+- [Python client](https://github.com/Uthana/uthana-python-client)
+
+## Get started with Uthana
+- [Watch the intro video](https://www.youtube.com/watch?v=WHmV8kD-_xo)
+- [Watch us live at SIGGRAPH 2025](https://www.youtube.com/watch?v=ouao2Pc6XTI)
+
+### Create your free account
+Unlimited generation and previews. Download up to 100 seconds of animations free every month. For higher volumes, check our pricing.
+
+[Try the beta](https://uthana.com/user/signup)
+
+## Studio & partner toolchain
+> Join us in co-developing the future of AI-driven animation.
+
+### Style transfers
+Apply your game style to generic motions across your team's models.
+
+### Integrations
+Leverage the Uthana platform in your development pipeline or game environment.
+
+### Data siloing
+Train bespoke models, or organize and label your data with our ML tools.
+
+Let's build to your needs
+
+
+## Ready to get started?
+ > Join the open beta now
+[Create your account](https://uthana.com/user/signup)
+
+
+(c) Copyright 2026 Uthana, Inc. All Rights Reserved
+[Contact us](mailto:support@uthana.com)
+[LinkedIn](https://www.linkedin.com/company/uthanainc)
+[Discord](https://discord.gg/PbMzMPSyTG)
+[YouTube](https://www.youtube.com/@UthanaInc)
+[X (Twitter)](https://x.com/uthana_inc)
+[Blog](https://uthana.com/blog)
+[FAQ](https://uthana.com/faq)
+[Careers](https://uthana.com/careers)
+[API documentation](https://uthana.com/docs/api)
+[Terms of Service](https://uthana.com/terms)
+[Privacy Policy](https://uthana.com/privacy)

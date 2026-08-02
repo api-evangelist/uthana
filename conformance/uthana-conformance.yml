@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: derived
+source: graphql/uthana-schema.graphql + https://uthana.com/docs/api
+standards:
+  - id: graphql
+    conforms: true
+    evidence: Single GraphQL endpoint at https://uthana.com/graphql with public introspection
+      (queryType Query, mutationType Mutation); GraphQL is the documented API paradigm.
+  - id: http-basic-auth-rfc7617
+    conforms: true
+    evidence: Docs instruct HTTP Basic auth with API key as username, empty password
+      (https://uthana.com/docs/api/api-key).
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 flows documented; /.well-known/oauth-authorization-server returns 403.
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 403; no OIDC docs.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use the GraphQL errors[] envelope (type/message/code), not
+      application/problem+json.
+  - id: llms-txt
+    conforms: true
+    evidence: https://uthana.com/llms.txt returns 200 (saved verbatim at llms/uthana-llms.txt).
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 403; /security.txt returns 404.
+  - id: async-job-polling
+    conforms: true
+    evidence: Long-running generations (video-to-motion, text-to-motion-3.0) return a Job
+      polled to completion via Query.job (docs changelog, 2026-06-15 entry).

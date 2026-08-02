@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://uthana.com/docs/api/changelog
+scheme: dated entries (Keep-a-Changelog style Added/Changed/Removed), model-versioned capabilities
+current_models:
+  text_to_motion: text-to-motion-3.0 (pay-as-you-go; async via create_text_to_motion_job)
+  video_to_motion: video-to-motion-2.0 (default), video-to-motion-2.1 (refined)
+  locomotion: locomotion 1.0
+entries:
+  - date: '2026-07-09'
+    changed:
+      - text-to-motion-3.0 now available to any account on the pay-as-you-go plan via the
+        create_text_to_motion_job mutation with model "text-to-motion-3.0".
+  - date: '2026-06-15'
+    added:
+      - text-to-motion-3.0 limited release via new create_text_to_motion_job mutation
+        (async diffusion model returning a Job to poll).
+      - video-to-motion-2.1 model with post-processing refinements (returns refined motion IDs).
+    changed:
+      - video-to-motion-2.0 became the default VTM model; video-to-motion-v2 kept as a
+        backward-compatible alias.
+    removed:
+      - video-to-motion-v1 removed (deprecation deadline 30 Apr 2026 passed).
+  - date: '2026-05'
+    added:
+      - playback_speed download option (0.1-2.0x, default 1.0).
+      - rerig_target and include_fingers character-upload options (@uthana/client v0.3.1,
+        uthana Python v0.4.0).
+      - Client SDK usage examples (Python and JS/TS tabs) throughout the docs.
+  - date: '2026-04'
+    added:
+      - "@uthana/client and @uthana/react published on npm (v0.2.0 initial release)."
+      - Python uthana package v0.2.0 with async and sync variants across all capabilities.
+      - Locomotion API (create_locomotion mutation); clients updated to v0.3.0.
+      - no_mesh option for GLB downloads (animation data only).
+    changed:
+      - video-to-motion-v2 became the default; v1 deprecated.
+  - date: '2026-02'
+    added:
+      - create_enhanced_stitched_motion mutation (smooth transitions between two motions).
+      - BUCMD diffusion-v2 model for create_text_to_motion (steps, cfg_scale, length, seed).
+      - auto_rig_confidence field in character upload responses (0-1 quality score).
+      - in_place, torso_only, roblox_compatible download options for FBX/GLB.
+  - date: '2025-11'
+    added:
+      - Motion-only animation download endpoint /motion/animation/{character_id}/{motion_id}/glb/...
+        (no character mesh, does not count against download quota).
+  - date: '2025-01-30'
+    added:
+      - Initial API documentation release, GraphQL API reference, basic cURL/Python/TypeScript examples.

@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: npm registry + PyPI + github.com/Uthana (verified 2026-07-21)
+packages:
+  - language: python
+    registry: pypi
+    name: uthana
+    version: 0.4.1
+    url: https://pypi.org/project/uthana/
+    install: pip install uthana
+    source: https://github.com/Uthana/uthana-python-client
+    official: true
+    notes: Async by default; every method has a _sync variant. Apache 2.0.
+  - language: javascript
+    registry: npm
+    name: "@uthana/client"
+    version: 0.4.1
+    url: https://www.npmjs.com/package/@uthana/client
+    install: npm install @uthana/client
+    source: https://github.com/Uthana/uthana-js-client
+    official: true
+    notes: JavaScript/TypeScript client; works in browser and Node.js.
+  - language: javascript
+    registry: npm
+    name: "@uthana/react"
+    version: 0.4.1
+    url: https://www.npmjs.com/package/@uthana/react
+    install: npm install @uthana/react @uthana/client @tanstack/react-query
+    source: https://github.com/Uthana/uthana-js-client
+    official: true
+    notes: React + react-query hooks (UthanaProvider, useUthanaUser, useUthanaTtm, ...).
+plugins:
+  - name: Uthana Blender add-on
+    platform: blender
+    url: https://github.com/Uthana/uthana-blender-plugin
+    official: true
+  - name: Uthana Maya plugin
+    platform: maya
+    url: https://github.com/Uthana/uthana-maya-plugin
+    official: true
+  - name: Uthana ComfyUI nodes
+    platform: comfyui
+    url: https://github.com/Uthana/uthana-comfy
+    official: true
+notes: No official C# client — docs direct C# users to raw GraphQL over HTTP.

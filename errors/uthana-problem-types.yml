@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: derived
+format: graphql-errors
+source: live probes of https://uthana.com/graphql and https://uthana.com (2026-07-21)
+envelope:
+  description: Uthana returns a GraphQL-style errors[] envelope. GraphQL validation errors
+    carry message/locations/type/stack/link; platform-level errors (e.g. HTTP 404 on
+    non-GraphQL paths) carry type/message/code/params.
+  graphql_error_fields: [message, locations, type, stack, link]
+  platform_error_fields: [type, message, code, params]
+problems:
+  - status: 404
+    type: not_found
+    title: Not Found
+    example: '{"data": null, "errors": [{"type": "not_found", "message": "Not Found", "code": 404, "params": null}]}'
+    observed_on: GET https://uthana.com/security.txt
+  - status: 200
+    type: GraphQLError
+    title: GraphQL validation error
+    example: '{"errors": [{"message": "Cannot query field \"nonexistent_field\" on type \"query\".", "locations": [{"line": 1, "column": 3}], "type": "GraphQLError", "stack": [], "link": "https://uthana.com/tb/..."}]}'
+    observed_on: POST https://uthana.com/graphql (invalid field)
+    notes: Validation errors include a `link` to a traceback/error-detail URL.
+  - status: 200
+    type: null-data
+    title: Unauthenticated queries resolve protected fields to null
+    example: '{"data": {"user": null}}'
+    observed_on: POST https://uthana.com/graphql (query { user { id } } without credentials)
+    notes: The endpoint accepts unauthenticated introspection and returns null for
+      account-scoped fields rather than an HTTP 401.
+notes: No dedicated error-code reference is published in the API docs as of 2026-07-21.

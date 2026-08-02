@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: searched
+source: https://uthana.com/docs/api/changelog
+versioning:
+  scheme: model-versioned
+  description: The GraphQL contract is unversioned; capability evolution happens through
+    versioned model identifiers passed as arguments (e.g. text-to-motion-1.0/2.0/3.0,
+    video-to-motion-2.0/2.1, locomotion 1.0). Backward-compatible aliases are kept
+    (video-to-motion-v2 still accepted after video-to-motion-2.0 became the default).
+  docs: https://uthana.com/docs/api/changelog
+deprecation:
+  policy_url: null
+  practice: Model versions are deprecated with a published deadline in the changelog, then
+    removed. Example - video-to-motion-v1 was deprecated (April 2026 entry) with a
+    deprecation deadline of 30 Apr 2026 and removed in the June 15, 2026 release.
+  sunset_header: false
+  docs: https://uthana.com/docs/api/changelog
+sla: null
+status_page: null
+deprecated_operations: []
+notes:
+  - No public status page was found (status.uthana.com does not resolve; none linked from docs).
+  - No formal written deprecation policy page; the dated-deadline practice above is
+    evidenced in the changelog.
+  - Rate limits are plan-level (https://uthana.com/docs/api/rate-limits) with no numeric
+    per-endpoint limits published.

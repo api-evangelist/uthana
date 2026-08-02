@@ -1,0 +1,81 @@
+provider: Uthana
+providerId: uthana
+generated: '2026-07-21'
+method: searched
+created: '2026-07-21'
+modified: '2026-07-21'
+sources:
+  - https://uthana.com/pricing
+  - https://uthana.com/docs/api/pricing
+description: Uthana offers subscription plans with monthly download-second and character
+  quotas (generation unlimited), plus a credit-based pay-as-you-go model billed per second
+  of generated output per model. All products are available on every plan; API & SDK
+  access is included from the free tier up.
+plans:
+  - id: uthana-dreamer
+    name: Dreamer
+    type: free
+    price: $0
+    entries:
+      - {label: Motion generation, limit: -1, note: unlimited}
+      - {label: Download seconds, limit: 30, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 10, timeFrame: month}
+      - {label: Character generations, limit: 2}
+      - {label: License, note: Non-commercial Creative Commons}
+  - id: uthana-indie
+    name: Indie
+    type: subscription
+    price: $10/month (or ~35% off billed yearly)
+    entries:
+      - {label: Download seconds, limit: 75, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 50, timeFrame: month}
+      - {label: License, note: Creative Commons}
+  - id: uthana-creator
+    name: Creator
+    type: subscription
+    price: $16/month
+    entries:
+      - {label: Download seconds, limit: 150, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 125, timeFrame: month}
+      - {label: License, note: Commercial}
+  - id: uthana-pro
+    name: Pro
+    type: subscription
+    price: $50/month
+    entries:
+      - {label: Download seconds, limit: 500, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 400, timeFrame: month}
+  - id: uthana-builder
+    name: Builder
+    type: subscription
+    price: $160/month
+    entries:
+      - {label: Download seconds, limit: 2000, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 1500, timeFrame: month}
+  - id: uthana-enterprise
+    name: Enterprise
+    type: enterprise
+    price: from $660/month (custom - sales@uthana.com)
+    entries:
+      - {label: Download seconds, limit: 12500, timeFrame: month}
+      - {label: Character uploads/auto-rigs, limit: 7500, timeFrame: month}
+      - {label: Support, note: Priority, early access, pipeline integration}
+  - id: uthana-payg
+    name: Pay-as-you-go
+    type: usage-based
+    price: per second of generated output ($100/mo minimum commitment)
+    entries:
+      - {label: Text to motion 1.0, price: $0.02/s, type: metered}
+      - {label: Text to motion 2.0, price: $0.03/s, type: metered}
+      - {label: Text to motion 3.0, price: $0.10/s, type: metered}
+      - {label: Video to motion 2.0, price: $0.05/s, type: metered}
+      - {label: Video to motion 2.1, price: $0.05/s, type: metered}
+      - {label: Locomotion 1.0, price: $0.02/s, type: metered}
+      - {label: Stitch/Loop 2.0, price: $0.01/s, type: metered}
+      - {label: Retargeting, price: free until October 2026, type: metered}
+      - {label: Auto-rigging, price: $0.15/rig, type: metered}
+      - {label: Character generation, price: $0.75/character, type: metered}
+      - {label: Downloads, limit: -1, note: unlimited - only generation is billed}
+      - {label: Credits, note: do not expire; wallet top-up with optional auto-recharge}
+      - {label: License, note: Commercial}
+plan_count: 7

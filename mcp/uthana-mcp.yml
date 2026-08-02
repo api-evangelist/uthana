@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: graphql/uthana-schema.graphql (live introspection of https://uthana.com/graphql)
+notes: No official Uthana MCP server was found (checked the official MCP registry, npm,
+  and github.com/Uthana on 2026-07-21). Uthana's documented agent-facing surface is
+  Context7 (library /websites/uthana_api) for LLM-readable docs. The tools below are a
+  candidate set derived from the real GraphQL operations.
+server:
+  name: uthana
+  transport: http
+tools:
+  - name: create_text_to_motion
+    description: Generate a 3D character motion from a natural-language prompt
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_text_to_motion
+  - name: create_text_to_motion_job
+    description: Start an async text-to-motion job (text-to-motion-3.0 diffusion model); poll the returned Job
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_text_to_motion_job
+  - name: create_video_to_motion
+    description: Generate motion from a 2D reference video (async Job)
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_video_to_motion
+  - name: create_locomotion
+    description: Generate controllable, loopable directional travel motion
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_locomotion
+  - name: create_enhanced_stitched_motion
+    description: Smoothly transition between two existing motions
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_enhanced_stitched_motion
+  - name: create_looped_motion
+    description: Create a seamless looped version of a motion
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_looped_motion
+  - name: create_character
+    description: Upload a 3D character (FBX/glTF); auto-rigs unrigged characters
+    source_operation: graphql/uthana-schema.graphql#Mutation.create_character
+  - name: list_characters
+    description: List the organization's characters
+    source_operation: graphql/uthana-schema.graphql#Query.characters
+  - name: list_motions
+    description: List generated motions
+    source_operation: graphql/uthana-schema.graphql#Query.motions
+  - name: get_job
+    description: Poll an async generation job by id
+    source_operation: graphql/uthana-schema.graphql#Query.job
+  - name: get_user
+    description: Get the authenticated user (auth check)
+    source_operation: graphql/uthana-schema.graphql#Query.user
+  - name: motion_download_summary
+    description: Check remaining download quota
+    source_operation: graphql/uthana-schema.graphql#Query.motion_download_summary

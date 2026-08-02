@@ -1,22 +1,157 @@
 aid: uthana
 name: Uthana
-description: Uthana is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Uthana builds foundation models for human motion — generative AI that creates
+  lifelike 3D character animation from text prompts, 2D reference video, or real-time
+  input, instantly retargeted to any rig (with auto-rigging for unrigged characters).
+  Founded in 2023, Uthana exposes its platform through a GraphQL API at uthana.com/graphql
+  with official Python and JavaScript/TypeScript clients, React hooks, Blender and Maya
+  plugins, ComfyUI nodes, and REST endpoints for downloading motions in FBX, GLB, BVH, and
+  Unitree G1 CSV formats for games, film, AI-native platforms, and robotics.
 url: https://raw.githubusercontent.com/api-evangelist/uthana/refs/heads/main/apis.yml
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/67a3a4768bd61958d5872829/67aa15d7488c26c0dfdb3ab7_thumb.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - a16z
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Animation
+- 3D Characters
+- Generative AI
+- Motion Capture
+- Gaming
+- Robotics
+- Foundation Models
+- GraphQL
+apis:
+- name: Uthana GraphQL API
+  description: Single GraphQL endpoint for the whole Uthana platform - text-to-motion,
+    video-to-motion, locomotion, stitch/loop, character upload with auto-rigging, asset
+    management, account, subscription, and pay-as-you-go billing operations. Public
+    introspection; HTTP Basic auth with the API key as username.
+  humanURL: https://uthana.com/docs/api
+  baseURL: https://uthana.com/graphql
+  tags:
+  - GraphQL
+  - Animation
+  - Generative AI
+  properties:
+  - type: Documentation
+    url: https://uthana.com/docs/api
+  - type: APIReference
+    url: https://uthana.com/docs/api/graphql
+  - type: GraphQL
+    url: graphql/uthana-schema.graphql
+  - type: GraphQL
+    url: graphql/uthana-graphql.md
+- name: Uthana Motion Download API
+  description: REST endpoints for downloading generated motions and characters as FBX,
+    GLB, BVH, or Unitree G1 CSV - /motion/file/ (with character mesh), /motion/animation/
+    (animation track only, not counted against download quota), and /motion/bundle/.
+    Retargeting to the addressed character happens automatically on download.
+  humanURL: https://uthana.com/docs/api/capabilities/downloading-motion
+  baseURL: https://uthana.com/motion
+  tags:
+  - Downloads
+  - Animation
+  properties:
+  - type: Documentation
+    url: https://uthana.com/docs/api/capabilities/downloading-motion
+common:
+- type: DomainSecurity
+  url: security/uthana-domain-security.yml
+- type: Website
+  url: https://uthana.com
+- type: DeveloperPortal
+  url: https://uthana.com/docs/api
+- type: Documentation
+  url: https://uthana.com/docs/api
+- type: APIReference
+  url: https://uthana.com/docs/api/graphql
+- type: GettingStarted
+  url: https://uthana.com/docs/api/
+- type: Support
+  url: https://uthana.com/docs/api/support
+- type: Blog
+  url: https://uthana.com/blog
+- type: FAQ
+  url: https://uthana.com/faq
+- type: GitHubOrganization
+  url: https://github.com/Uthana
+- type: Pricing
+  url: https://uthana.com/pricing
+- type: SignUp
+  url: https://uthana.com/user/signup
+- type: Login
+  url: https://uthana.com/user/login
+- type: TermsOfService
+  url: https://uthana.com/terms
+- type: PrivacyPolicy
+  url: https://uthana.com/privacy
+- type: Discord
+  url: https://discord.gg/PbMzMPSyTG
+- type: YouTube
+  url: https://www.youtube.com/@UthanaInc
+- type: X (Twitter)
+  url: https://x.com/Uthana_Inc
+- type: LinkedIn
+  url: https://www.linkedin.com/company/uthanainc/
+- type: RateLimits
+  url: https://uthana.com/docs/api/rate-limits
+- type: ChangeLog
+  url: changelog/uthana-changelog.yml
+- type: ChangeLog
+  url: https://uthana.com/docs/api/changelog
+- type: LLMsTxt
+  url: llms/uthana-llms.txt
+- type: Packages
+  url: packages/uthana-packages.yml
+- type: SDKs
+  url: packages/uthana-packages.yml
+- type: MCPServer
+  url: mcp/uthana-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/uthana-authentication.yml
+- type: Conformance
+  url: conformance/uthana-conformance.yml
+- type: ErrorCatalog
+  url: errors/uthana-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/uthana-lifecycle.yml
+- type: Deprecation
+  url: https://uthana.com/docs/api/changelog
+- type: Sandbox
+  url: sandbox/uthana-sandbox.yml
+- type: Conventions
+  url: conventions/uthana-conventions.yml
+- type: DataModel
+  url: data-model/uthana-data-model.yml
+- type: Plans
+  url: plans/uthana-plans.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

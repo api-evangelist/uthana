@@ -1,0 +1,998 @@
+type Asset {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  asset uid
+  """
+  uid: String!
+  filename: String!
+  mimetype: String!
+  type: String!
+  sha256: String!
+  """
+  asset metadata
+  """
+  metadata: GenericScalar!
+  """
+  asset size in bytes
+  """
+  size: Int!
+}
+
+type CancelSubscription {
+  """
+  Updated subscription object or null if no subscription
+  """
+  subscription: Subscription
+}
+
+type ChangeSubscription {
+  """
+  Updated subscription object
+  """
+  subscription: Subscription!
+}
+
+type Character {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  character's org
+  """
+  org_id: String!
+  """
+  character name
+  """
+  name: String!
+  """
+  character assets
+  """
+  assets: [Asset!]
+}
+
+type CreateBillingPortalSession {
+  """
+  Billing portal redirect url
+  """
+  url: String!
+}
+
+type CreateCharacter {
+  character: Character!
+  """
+  A confidence score from 0.0 to 1.0, a low score indicates a low probability of auto rigging success, due factors such as: non-humanoid characters, extreme proportions, limb intersections, flowing clothing or extra appendages
+  """
+  auto_rig_confidence: Float
+  """
+  An optional message indicating any issues with the character
+  """
+  message: String
+}
+
+type CreateCharacterFromImage {
+  character: Character!
+  auto_rig_confidence: Float
+}
+
+type CreateEnhancedStitchedMotion {
+  motion: Motion!
+}
+
+type CreateImageFromImage {
+  """
+  Character ID used to key the generated image
+  """
+  character_id: String!
+  """
+  Generated image (key + proxy url).
+  """
+  image: Image!
+}
+
+type CreateImageFromText {
+  """
+  Character ID used to key the generated images
+  """
+  character_id: String
+  """
+  Generated images (key + proxy url).
+  """
+  images: [Image!]!
+}
+
+type CreateLabel {
+  label: Label!
+}
+
+type CreateLocomotion {
+  motion: Motion!
+}
+
+type CreateLoopedMotion {
+  motion: Motion!
+}
+
+type CreateMotionFromGltf {
+  motion: Motion!
+}
+
+"""
+Create a Stripe Checkout session (mode=payment) to top up the PAYG balance.
+"""
+type CreatePaymentSession {
+  """
+  Stripe Checkout URL to redirect the user to
+  """
+  url: String!
+}
+
+type CreateRTCCSession {
+  ok: Boolean!
+  session_id: String!
+}
+
+"""
+Create a Stripe Checkout session (mode=setup) to save a payment method without charging.
+"""
+type CreateSetupSession {
+  """
+  Stripe Checkout URL to redirect the user to
+  """
+  url: String!
+}
+
+type CreateShareLink {
+  png_url: String
+}
+
+type CreateStitchedMotion {
+  motion: Motion!
+}
+
+type CreateSubscription {
+  """
+  Payment page redirect url
+  """
+  url: String!
+}
+
+type CreateTextToMotion {
+  motion: Motion!
+}
+
+"""
+Create an async text-to-motion job. Returns immediately with a Job that the
+client can poll via GetJobs until it resolves to a motion.
+"""
+type CreateTextToMotionJob {
+  job: Job!
+}
+
+type CreateVideoToMotion {
+  job: Job!
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+scalar DateTime
+
+"""
+The `Decimal` scalar type represents a python Decimal.
+"""
+scalar Decimal
+
+type DeepgramToken {
+  """
+  Ephemeral Deepgram JWT
+  """
+  access_token: String
+  """
+  Seconds until the JWT expires
+  """
+  expires_in: Float
+}
+
+type EnhancePrompt {
+  """
+  Enhanced (rewritten) prompt
+  """
+  enhanced_prompt: String!
+  """
+  Estimated duration in frames
+  """
+  estimated_duration_frames: Int
+}
+
+type FavoriteMotion {
+  motion_favorite: MotionFavorite!
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+type Image {
+  """
+  S3 key of the generated image
+  """
+  key: String!
+  """
+  Proxy URL of the generated image
+  """
+  url: String!
+}
+
+type Job {
+  id: ID!
+  """
+  job created timestamp
+  """
+  created_at: DateTime
+  """
+  job started timestamp
+  """
+  started_at: DateTime
+  """
+  job ended timestamp
+  """
+  ended_at: DateTime
+  """
+  job status
+  """
+  status: String!
+  """
+  job motion method
+  """
+  method: String!
+  """
+  job motion model
+  """
+  model: String
+  """
+  job arguments
+  """
+  args: GenericScalar
+  """
+  job result
+  """
+  result: GenericScalar
+  """
+  estimated processing time in seconds, -1 if unknown
+  """
+  est_processing_time: Int
+}
+
+type Label {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  motion id
+  """
+  motion_id: String!
+  description: String!
+  """
+  Where the label starts in the motion normalized to motion length [0.0..1.0]
+  """
+  start: Float
+  """
+  Where the label ends in the motion normalized to motion length [0.0..1.0]
+  """
+  end: Float
+  """
+  User id that created the label
+  """
+  user_id: String
+  motion: Motion
+  user: User
+  rating: MotionRating
+  favorite: MotionFavorite
+}
+
+type LabelSearchResult {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  motion id
+  """
+  motion_id: String!
+  description: String!
+  """
+  Where the label starts in the motion normalized to motion length [0.0..1.0]
+  """
+  start: Float
+  """
+  Where the label ends in the motion normalized to motion length [0.0..1.0]
+  """
+  end: Float
+  """
+  User id that created the label
+  """
+  user_id: String
+  motion: Motion
+  user: User
+  rating: MotionRating
+  favorite: MotionFavorite
+  """
+  Highlighted description
+  """
+  headline: String
+}
+
+type Motion {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  character organization id
+  """
+  org_id: String!
+  """
+  character name
+  """
+  name: String!
+  """
+  motion listing order priority
+  """
+  priority: Int
+  """
+  motion tags
+  """
+  tags: GenericScalar!
+  """
+  motion enabled in motion_viewer
+  """
+  motion_viewer: Boolean!
+  """
+  motion enabled as training
+  """
+  training: Boolean!
+  """
+  motion assets
+  """
+  assets: [Asset!]
+  """
+  motion labels
+  """
+  labels: [Label!]
+  rating: MotionRating
+  favorite: MotionFavorite
+}
+
+type MotionDownload {
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  User id that downloaded
+  """
+  user_id: String!
+  """
+  Org id that downloaded
+  """
+  org_id: String!
+  """
+  Character id for download
+  """
+  character_id: String!
+  """
+  Motion id for download
+  """
+  motion_id: String!
+  """
+  Seconds for download
+  """
+  secs: Float!
+  user: User
+  character: Character
+  motion: Motion
+}
+
+type MotionDownloadAllowed {
+  """
+  True if download can proceed
+  """
+  allowed: Boolean
+  """
+  Reason message for why download can or cannot proceed
+  """
+  reason: String
+}
+
+type MotionDownloadSummary {
+  """
+  Summary date
+  """
+  date: Date!
+  """
+  Aggregate seconds for interval
+  """
+  secs: Float!
+}
+
+type MotionFavorite {
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  User id that favorited the motion
+  """
+  user_id: String!
+  """
+  Motion id
+  """
+  motion_id: String!
+  """
+  Label id (optional)
+  """
+  label_id: String
+}
+
+type MotionRating {
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  User id that created the rating
+  """
+  user_id: String!
+  """
+  Motion id
+  """
+  motion_id: String!
+  """
+  Label id (optional)
+  """
+  label_id: String
+  """
+  Rating score
+  """
+  score: Int!
+}
+
+input MotionStitchInput {
+  character_id: String!
+  prefix: StitchParamsInput!
+  suffix: StitchParamsInput!
+}
+
+type Mutation {
+  create_character(auto_rig: Boolean = true, auto_rig_front_facing: Boolean = true, file: Upload!, include_fingers: Boolean = true, name: String!, rerig_target: String): CreateCharacter!
+  create_image_from_text(prompt: String!): CreateImageFromText!
+  create_image_from_image(file: Upload!): CreateImageFromImage!
+  create_character_from_image(character_id: String!, image_key: String!, include_fingers: Boolean = true, name: String, prompt: String!, rerig_target: String): CreateCharacterFromImage!
+  update_character(character_id: String!, deleted: Boolean, name: String): UpdateCharacter!
+  create_locomotion(character_id: String!, move_speed: Float = 1.2, strides: Int = 4, style_id: String = "neutral_male_a", travel_angle: Float = 0): CreateLocomotion!
+  create_text_to_motion(cfg_scale: Float, character_id: String, enhance_prompt: Boolean = true, estimate_duration: Boolean = true, foot_ik: Boolean = true, length: Float = 10, model: String, motion_length: Int, prompt: String!, retargeting_ik: Boolean, seed: Int, steps: Int): CreateTextToMotion!
+  """
+  Create an async text-to-motion job. Returns immediately with a Job that the
+client can poll via GetJobs until it resolves to a motion.
+  """
+  create_text_to_motion_job(character_id: String, length: Float, model: String!, prompt: String!, rewrite_prompt: Boolean = true): CreateTextToMotionJob!
+  create_video_to_motion(character_id: String, file: Upload!, model: String = "video-to-motion-2.0", motion_name: String!, preserve_video_fps: Boolean = false, preserve_video_resolution: Boolean = false): CreateVideoToMotion!
+  enhance_prompt(estimate_duration: Boolean = true, prompt: String!): EnhancePrompt!
+  create_stitched_motion(duration: Float = 0.5, leading_motion_id: String!, trailing_motion_id: String!): CreateStitchedMotion!
+  create_enhanced_stitched_motion(stitch_input: MotionStitchInput!): CreateEnhancedStitchedMotion!
+  create_motion_from_gltf(character_id: String, gltf: String!, motion_id: String, motion_method: String = "SaveMotion", motion_name: String!): CreateMotionFromGltf!
+  trim_and_loop_motion(end: Float!, loop: GenericScalar = false, loop_root_motion: Boolean, motion_id: String!, motion_name: String!, start: Float!): TrimAndLoopMotion!
+  create_looped_motion(character_id: String!, loop_mode: String!, motion_id: String!, trim_end_pct: Float, trim_start_pct: Float, zone_duration: Float, zone_end_position: ZoneEndPositionInput, zone_mode: String = "modify"): CreateLoopedMotion!
+  rate_motion(label_id: String, motion_id: String!, score: Int!): RateMotion!
+  favorite_motion(favorite: Boolean!, label_id: String, motion_id: String!): FavoriteMotion!
+  update_motion(deleted: Boolean, motion_id: String!, name: String): UpdateMotion!
+  create_label(description: String!, end: Float, motion_id: String!, start: Float): CreateLabel!
+  update_label(deleted: Boolean, description: String, end: Float, label_id: String, start: Float): UpdateLabel!
+  update_user(survey_completed: Boolean, tos_accepted: Boolean): UpdateUser!
+  reset_user_apikey: ResetUserApikey!
+  create_share_link(character_id: String!, end: Float!, fps: Int!, ht: Int!, motion_id: String!, start: Float!, wd: Int!): CreateShareLink!
+  create_rtcc_session: CreateRTCCSession!
+  rtcc_text_generate(num_primitives: Int = 1, prompt: String!, session_id: String!, skeleton: String = "ue5"): RTCCTextGenerate!
+  create_subscription(next: String, price_slug: String!): CreateSubscription!
+  change_subscription(price_slug: String!): ChangeSubscription!
+  cancel_subscription: CancelSubscription!
+  resume_subscription: ResumeSubscription!
+  create_billing_portal_session(return_url: String): CreateBillingPortalSession!
+  """
+  Create a Stripe Checkout session (mode=payment) to top up the PAYG balance.
+  """
+  payg_create_payment_session(amount_usd: Decimal!, next: String): CreatePaymentSession!
+  """
+  Create a Stripe Checkout session (mode=setup) to save a payment method without charging.
+  """
+  payg_create_setup_session(next: String): CreateSetupSession!
+  """
+  Update auto-recharge settings for the current org's PAYG wallet.
+  """
+  payg_update_auto_recharge(enabled: Boolean!, monthly_limit_enabled: Boolean!, monthly_limit_usd: Decimal, restore_usd: Decimal!, threshold_usd: Decimal!): UpdateAutoRecharge!
+}
+
+type Org {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  Organization name
+  """
+  name: String!
+  """
+  Allocated seconds of motion downloads per month total
+  """
+  motion_download_secs_per_month: Float
+  """
+  Allocated seconds of motion downloads per month remaining
+  """
+  motion_download_secs_per_month_remaining: Float
+  """
+  Number of created characters allowed per month
+  """
+  characters_allowed: Int
+  """
+  Number of created characters allowed per month remaining
+  """
+  characters_allowed_remaining: Int
+  """
+  True if this org has PAYG active
+  """
+  payg_enabled: Boolean
+  """
+  Combined balance (credit + paid)
+  """
+  payg_total_usd: Decimal
+  """
+  True if auto-recharge is enabled
+  """
+  payg_auto_recharge_enabled: Boolean
+  """
+  Trigger auto-recharge when balance drops to this amount
+  """
+  payg_auto_recharge_threshold_usd: Decimal
+  """
+  Recharge to restore balance to this amount
+  """
+  payg_auto_recharge_restore_usd: Decimal
+  """
+  True if a monthly auto-recharge cap is active
+  """
+  payg_auto_recharge_monthly_limit_enabled: Boolean
+  """
+  Maximum auto-recharge spend per calendar month
+  """
+  payg_auto_recharge_monthly_limit_usd: Decimal
+  """
+  True if the invoking user has a Stripe customer record (billing is set up)
+  """
+  payg_has_stripe_customer: Boolean
+  """
+  Users for organization
+  """
+  users: [User!]
+}
+
+type PaygLedgerEntry {
+  id: ID!
+  created: DateTime!
+  type: String!
+  total_usd: Decimal!
+  balance_before: Decimal!
+  balance_after: Decimal!
+  job_id: String
+  model: String
+  model_version: String
+  billing_unit: String
+  quantity: Float
+  unit_price: Decimal
+  ref: String
+  task_id: String
+  status: String
+}
+
+type PaygPrice {
+  model_key: String!
+  billing_unit: String!
+  unit_price: Decimal!
+}
+
+input PelvisStateInput {
+  pelvis_world_pos: Vector3Input!
+  pelvis_world_rot: QuaternionInput!
+  hips_forward_facing_world_yaw: Float!
+}
+
+input QuaternionInput {
+  x: Float!
+  y: Float!
+  z: Float!
+  w: Float!
+}
+
+type Query {
+  """
+  Logged-in user organization
+  """
+  org: Org
+  """
+  Logged-in user
+  """
+  user: User
+  """
+  Per-model PAYG billing rates
+  """
+  payg_prices: [PaygPrice!]
+  """
+  PAYG ledger entries for the logged-in user's org (most recent first)
+  """
+  payg_ledger(limit: Int = 50): [PaygLedgerEntry!]
+  """
+  All available locomotion styles
+  """
+  locomotion_styles: [String!]
+  """
+  Get a character
+  """
+  character(id: String): Character
+  characters: [Character!]
+  """
+  Get a motion
+  """
+  motion(id: String): Motion
+  """
+  Motions available for logged-in user
+  """
+  motions(character_id: String, app_ids: [String!], methods: [String]): [Motion!]
+  label_search(query: String, limit: Int = 20): [LabelSearchResult!]
+  job(job_id: String): Job
+  """
+  Jobs available for logged-in user/org
+  """
+  jobs(method: String): [Job!]
+  motion_downloads(user_id: String): [MotionDownload!]
+  motion_download_summary(interval: String = "month"): [MotionDownloadSummary!]
+  motion_download_allowed(character_id: String, motion_id: String): MotionDownloadAllowed
+  motion_rating(motion_id: String!, label_id: String): MotionRating
+  motion_favorite(motion_id: String!, label_id: String): MotionFavorite
+  """
+  Issue short-lived Deepgram token (TTL 120s)
+  """
+  deepgram_token: DeepgramToken
+  """
+  Start sunburst stats job and return job
+  """
+  sunburst(source: String = "labels"): Job
+  """
+  List of subscription plans
+  """
+  subscription_plans: [SubscriptionPlan!]
+  """
+  Logged-in user org's subscription
+  """
+  subscription: Subscription
+  character_rtcc_retarget(src_character_id: String!, dst_character_id: String!): GenericScalar
+}
+
+type RTCCTextGenerate {
+  ok: Boolean!
+  state: GenericScalar!
+}
+
+type RateMotion {
+  motion_rating: MotionRating!
+}
+
+type ResetUserApikey {
+  """
+  New apikey for the logged-in user
+  """
+  apikey: String
+}
+
+type ResumeSubscription {
+  """
+  Updated subscription object or null if no subscription
+  """
+  subscription: Subscription
+}
+
+input StitchParamsInput {
+  prompt: String!
+  motion_id: String!
+  stitch_loop: Boolean!
+  stitch_duration: Float!
+  motion_duration: Float!
+  motion_lower_trim_time: Float!
+  motion_upper_trim_time: Float!
+  motion_lower_trim_fraction: Float!
+  motion_upper_trim_fraction: Float!
+  root_node_world_pos: Vector3Input!
+  root_node_world_rot: QuaternionInput!
+  at_zero_time: PelvisStateInput!
+  at_lower_trim_time: PelvisStateInput!
+  at_upper_trim_time: PelvisStateInput!
+}
+
+type Subscription {
+  """
+  Uthana user id
+  """
+  user_id: String!
+  """
+  Uthana org id
+  """
+  org_id: String!
+  """
+  Stripe subscription status
+  """
+  status: String!
+  """
+  Stripe subscription currency
+  """
+  currency: String!
+  """
+  Stripe subscription interval amount
+  """
+  amount: Decimal!
+  """
+  Stripe subscription interval (month/year)
+  """
+  interval: String!
+  """
+  Stripe subscription created timestamp
+  """
+  created: DateTime!
+  """
+  Stripe subscription started timestamp
+  """
+  start_date: DateTime!
+  """
+  Stripe current billing period start
+  """
+  current_period_start: DateTime!
+  """
+  Stripe current billing period end
+  """
+  current_period_end: DateTime!
+  """
+  Subscription is set to cancel at billing period end
+  """
+  cancel_at_period_end: Boolean!
+  """
+  Price slug
+  """
+  price_slug: String!
+  """
+  Plan seconds download per month
+  """
+  secs_per_month: Int!
+  """
+  Plan number of active characters
+  """
+  characters: Int!
+  user: User!
+  org: Org!
+  plan: SubscriptionPlan!
+  price: SubscriptionPrice!
+}
+
+type SubscriptionPlan {
+  """
+  Plan slug
+  """
+  slug: String
+  """
+  Plan name
+  """
+  name: String
+  """
+  Plan description
+  """
+  description: String
+  """
+  Plan seconds per month
+  """
+  seconds: Int
+  """
+  Plan number of active characters
+  """
+  characters: Int
+  """
+  True if plan is active for purchase
+  """
+  active: Boolean
+  """
+  True if plan allows api access
+  """
+  api_access: Boolean
+  """
+  List of prices
+  """
+  prices: [SubscriptionPrice!]
+}
+
+type SubscriptionPrice {
+  """
+  Price slug
+  """
+  slug: String
+  """
+  Plan billing interval (month/year)
+  """
+  interval: String
+  """
+  Plan price per interval in dollars and decimal cents
+  """
+  price: Decimal
+}
+
+type TrimAndLoopMotion {
+  motion: Motion!
+}
+
+"""
+Update auto-recharge settings for the current org's PAYG wallet.
+"""
+type UpdateAutoRecharge {
+  org: Org!
+}
+
+type UpdateCharacter {
+  character: Character!
+}
+
+type UpdateLabel {
+  label: Label!
+}
+
+type UpdateMotion {
+  motion: Motion!
+}
+
+type UpdateUser {
+  user: User!
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload
+
+type User {
+  id: ID!
+  """
+  record created timestamp
+  """
+  created: DateTime!
+  """
+  record updated timestamp
+  """
+  updated: DateTime!
+  """
+  record deleted timestamp (null if not deleted)
+  """
+  deleted: DateTime
+  """
+  user's org
+  """
+  org_id: String!
+  """
+  user's email address
+  """
+  email: String!
+  """
+  True if the email is verified
+  """
+  email_verified: Boolean!
+  """
+  user's full name
+  """
+  name: String!
+  """
+  list of authorized roles for this user
+  """
+  roles: [String!]
+  """
+  user's timezone at last login
+  """
+  tz: String!
+  """
+  Datetime TOS was accepted or null
+  """
+  tos_accepted: DateTime
+  """
+  Datetime sruvey was completed or null
+  """
+  survey_completed: DateTime
+  org: Org!
+}
+
+input Vector3Input {
+  x: Float!
+  y: Float!
+  z: Float!
+}
+
+input ZoneEndPositionInput {
+  x: Float!
+  y: Float!
+  facing_angle: Float
+}

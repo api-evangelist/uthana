@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+host: https://uthana.com
+documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /llms.txt
+    status: 200
+    file: ../llms/uthana-llms.txt
+  - path: /security.txt
+    status: 404
+notes: The /.well-known/ prefix returns 403 Forbidden for all probed documents;
+  only the root /llms.txt is published (saved verbatim under llms/).

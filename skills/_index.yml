@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: generated
+source: graphql/uthana-schema.graphql + https://uthana.com/docs/api
+skills:
+  - file: uthana-text-to-motion.md
+    name: Generate a motion from text and download it
+    api: graphql/uthana-schema.graphql
+    operations: [create_text_to_motion, create_text_to_motion_job, job, motion_download_summary]
+  - file: uthana-video-to-motion.md
+    name: Generate a motion from a reference video
+    api: graphql/uthana-schema.graphql
+    operations: [create_video_to_motion, job, jobs]
+  - file: uthana-upload-and-autorig-character.md
+    name: Upload and auto-rig a character
+    api: graphql/uthana-schema.graphql
+    operations: [create_character, update_character, characters, character]
+notes: Operations are verified against the introspected GraphQL schema
+  (graphql/uthana-schema.graphql); Uthana publishes no first-party agent skills as of
+  2026-07-21 (Context7 library /websites/uthana_api is its LLM-docs surface).

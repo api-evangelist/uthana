@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+source: graphql/uthana-introspection.json (live introspection of https://uthana.com/graphql)
+entities:
+  - name: Org
+    description: Billing/tenant boundary; carries plan quotas (motion_download_secs_per_month,
+      characters_allowed) and pay-as-you-go wallet state (payg_* fields).
+  - name: User
+    description: Account within an Org (email, roles, tz, tos_accepted).
+  - name: Character
+    description: Uploaded/generated 3D character; auto-rigged when unrigged.
+  - name: Motion
+    description: Generated motion clip (tags, rating, favorite, labels, assets).
+  - name: Job
+    description: Async generation job (status, method, model, args, result, est_processing_time).
+  - name: Asset
+    description: Stored file (filename, mimetype, sha256, size, metadata).
+  - name: Label
+    description: Time-ranged annotation on a motion (start/end, description).
+  - name: MotionDownload
+    description: Metered download event (secs) counted against Org quota.
+  - name: Subscription
+    description: Plan subscription (price_slug, secs_per_month, characters, period fields);
+      linked to SubscriptionPlan/SubscriptionPrice; billing via Stripe portal sessions.
+  - name: PaygLedgerEntry
+    description: Pay-as-you-go ledger line (model, model_version, billing_unit, quantity,
+      unit_price, balance_before/after).
+relationships:
+  - {from: User, to: Org, type: belongs_to, via: org_id}
+  - {from: Org, to: User, type: has_many, via: users}
+  - {from: Character, to: Org, type: belongs_to, via: org_id}
+  - {from: Character, to: Asset, type: has_many, via: assets}
+  - {from: Motion, to: Org, type: belongs_to, via: org_id}
+  - {from: Motion, to: Asset, type: has_many, via: assets}
+  - {from: Motion, to: Label, type: has_many, via: labels}
+  - {from: Motion, to: MotionRating, type: has_one, via: rating}
+  - {from: Motion, to: MotionFavorite, type: has_one, via: favorite}
+  - {from: Label, to: Motion, type: belongs_to, via: motion_id}
+  - {from: Label, to: User, type: belongs_to, via: user_id}
+  - {from: MotionDownload, to: Character, type: belongs_to, via: character_id}
+  - {from: MotionDownload, to: Motion, type: belongs_to, via: motion_id}
+  - {from: MotionDownload, to: User, type: belongs_to, via: user_id}
+  - {from: Subscription, to: User, type: belongs_to, via: user_id}
+  - {from: Subscription, to: Org, type: belongs_to, via: org_id}
+  - {from: Subscription, to: SubscriptionPlan, type: has_one, via: plan}
+  - {from: Subscription, to: SubscriptionPrice, type: has_one, via: price}
+  - {from: PaygLedgerEntry, to: Job, type: belongs_to, via: job_id}
+notes: Motions are addressed as (character_id, motion_id) pairs in download endpoints;
+  retargeting to the addressed character happens automatically on download.

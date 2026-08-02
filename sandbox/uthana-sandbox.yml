@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://uthana.com/docs/api (quickstart) + https://uthana.com/pricing
+model: free-tier + published default assets (no separate test/live key modes)
+free_tier:
+  plan: Dreamer (free)
+  includes:
+    - Unlimited motion generation and previews
+    - 30 download seconds/month
+    - 10 character uploads/auto-rigs per month
+    - 2 character generations
+    - API & SDK access
+    - Non-commercial Creative Commons license
+  signup: https://uthana.com/user/signup
+default_assets:
+  - kind: character
+    name: Tar
+    id: cXi2eAP19XwQ
+    detail: Published default character usable in quickstart calls without uploading a
+      model (docs quickstart, Step 3). The Python client also ships a UthanaCharacters
+      enum of hosted characters (e.g. UthanaCharacters.ava).
+tooling:
+  - The API docs are interactive - paste your API key into the docs header field and the
+    embedded examples use it (desktop only).
+  - 'Auth smoke test documented - POST {"query": "{ __typename }"} returns {"data":{"__typename":"Query"}}.'
+notes: There is no separate sandbox environment or test-key prefix; the free plan plus the
+  published default character is the documented way to try the API.

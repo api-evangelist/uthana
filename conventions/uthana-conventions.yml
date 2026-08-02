@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: searched
+source: https://uthana.com/docs/api (quickstart, api-key, capabilities, changelog, rate-limits)
+authentication:
+  style: http-basic-api-key
+  detail: API key as Basic-auth username with empty password; official clients accept the
+    key in the constructor. See authentication/uthana-authentication.yml.
+endpoint:
+  style: graphql
+  url: https://uthana.com/graphql
+  detail: Single GraphQL endpoint for all queries/mutations; file downloads use companion
+    REST paths (/motion/file/, /motion/animation/, /motion/bundle/) with the same auth.
+async_jobs:
+  pattern: job-polling
+  detail: Long-running generations (video-to-motion, text-to-motion-3.0) return a Job
+    (id, status, est_processing_time); poll Query.job until completion. Fast models
+    return motion ids synchronously.
+idempotency:
+  supported: false
+  detail: No idempotency-key mechanism is documented.
+pagination:
+  style: undocumented
+  detail: List queries (motions, characters, jobs, motion_downloads, payg_ledger) are
+    exposed without a documented cursor/offset contract in the docs.
+versioning:
+  style: model-versioned arguments
+  detail: Capability models are versioned via the model argument (text-to-motion-3.0 etc.);
+    the GraphQL schema itself is unversioned. See lifecycle/uthana-lifecycle.yml.
+error_envelope:
+  shape: graphql errors[]
+  detail: GraphQL validation errors carry message/locations/type/link; platform errors
+    carry type/message/code/params. See errors/uthana-problem-types.yml.
+rate_limits:
+  signaling: none documented
+  detail: Plan-level quotas (download seconds/month, character uploads/month) govern usage;
+    Uthana reserves the right to apply rate limits to protect the platform
+    (https://uthana.com/docs/api/rate-limits). No rate-limit response headers documented.
+quotas:
+  download_seconds: Metered per plan (Dreamer 30/mo free ... Enterprise 12,500/mo); the
+    /motion/animation/ (no-mesh) endpoint does not count against download quota.
+  generation: Unlimited on subscription plans; pay-as-you-go bills per second of generated
+    output per model.
+custom_domains:
+  supported: true
+  detail: Clients accept a domain option for non-default API hosts
+    (https://uthana.com/docs/api/api-key, Custom domain section).
+cross_links:
+  - authentication/uthana-authentication.yml
+  - errors/uthana-problem-types.yml
+  - lifecycle/uthana-lifecycle.yml
+  - changelog/uthana-changelog.yml
+  - plans/uthana-plans.yml
