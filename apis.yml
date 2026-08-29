@@ -8,6 +8,17 @@ description: Uthana builds foundation models for human motion — generative AI 
   plugins, ComfyUI nodes, and REST endpoints for downloading motions in FBX, GLB, BVH, and
   Unitree G1 CSV formats for games, film, AI-native platforms, and robotics.
 url: https://raw.githubusercontent.com/api-evangelist/uthana/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
