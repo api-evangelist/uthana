@@ -79,3 +79,60 @@ plans:
       - {label: Credits, note: do not expire; wallet top-up with optional auto-recharge}
       - {label: License, note: Commercial}
 plan_count: 7
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - metered
+  - subscription
+  units: []
+  plans:
+  - name: Dreamer
+    access: free
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Indie
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods:
+    - month
+  - name: Creator
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods:
+    - month
+  - name: Builder
+    access: other
+    model: subscription
+    model_how: stated
+    units: []
+    periods:
+    - month
+  - name: Enterprise
+    access: enterprise
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Pay-as-you-go
+    access: other
+    model: metered
+    model_how: stated
+    units: []
+    periods: []
